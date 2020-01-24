@@ -1,0 +1,27 @@
+button {
+  margin: 1rem 0;
+  font-family: inherit;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.primary {
+  border: none;
+  background: #3c7856;
+  color: white;
+}
+
+.secondary {
+  background: white;
+  border: 1px solid #3c7856;
+  color: #3c7856;
+}
+
+.secondary:hover, .primary:hover {
+  box-shadow: 4px 4px 14px -8px rgb(119, 119, 119);
+}
+
+.secondary:active, .primary:active {
+  box-shadow: none;
+}

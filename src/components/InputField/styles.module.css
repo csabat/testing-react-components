@@ -1,0 +1,19 @@
+.inputField {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-color:  #bbbbbb;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.25rem;
+}
+
+.container {
+  width: 100%;
+}
+
+.label {
+  font-size: 1rem;
+  color: #343434;
+  margin-bottom: 0.5rem;
+}
