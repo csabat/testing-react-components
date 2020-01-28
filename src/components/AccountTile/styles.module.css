@@ -1,0 +1,23 @@
+.accountTile {
+  border: 1px solid #3c7856;
+  border-radius: 0.25rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+  background: white;
+}
+
+.accountType {
+  background: #3c7856;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.inactive {
+  background: #214833;
+}
+
+.inactive:hover {
+  background: #3c7856
+}

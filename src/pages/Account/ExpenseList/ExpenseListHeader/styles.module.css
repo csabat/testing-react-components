@@ -1,0 +1,5 @@
+.detailsHeader {
+  display: flex;
+  justify-content: space-between;
+  color: #3c7856;
+}

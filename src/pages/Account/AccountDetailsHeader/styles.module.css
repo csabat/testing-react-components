@@ -1,0 +1,25 @@
+.accountInfo {
+  padding: 0.5rem 1rem
+}
+
+.total {
+  color: #343434;
+  font-size: 3rem;
+  margin-bottom: 0.5rem
+}
+
+.subTotal {
+  color: #727A7B;
+  font-size: 1rem;
+}
+
+.cardType {
+  color: #3c7856;
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.codes {
+  color: #727A7B;
+  font-size: 1.25rem;
+}

@@ -1,0 +1,33 @@
+.accountContainer {
+  height: 100%;
+  width: 60%;
+  margin: auto;
+  padding-top: 5rem;
+  justify-content: center;
+}
+
+.welcome {
+  text-align: left;
+  color: #343434;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.accounts {
+  display: flex;
+}
+
+.account {
+  margin-right: 0.25rem;
+}
+
+.header {
+  padding: 1rem;
+  width: 100%;
+  margin: -1px;
+  border: 2px solid #3c7856;
+}
+
+.expenses {
+  width: 100%;
+}

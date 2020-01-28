@@ -1,7 +1,13 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 import Header from './components/Header';
-import InputField from './components/InputField';
-import Button, { ButtonType } from './components/Button/Button';
+import Login from './pages/Login';
+import Account from './pages/Account';
 
 const styles = require('./styles.module.css');
 
@@ -9,18 +15,16 @@ const App: React.FC = () => {
   return (
     <div className={styles.container}>
       <Header />
-      <div className={styles.main}>
-        <div className={styles.pictureContainer}>
-          <div className={styles.title}>Generous Bank</div>
-          <div className={styles.subtitle}>Values we trust.</div>
-        </div>
-        <div className={styles.loginContainer}>
-          <div className={styles.loginTitle}>Login to your personal account</div>
-          <InputField name="emailAddress"/>
-          <InputField name="password" />
-          <Button label="Submit" type={ButtonType.PRIMARY} onClick={() => {}}/>
-        </div>
-      </div>
+      <Router>
+        <Switch>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/account'>
+            <Account />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
