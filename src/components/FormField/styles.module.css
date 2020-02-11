@@ -1,0 +1,11 @@
+.label {
+  font-size: 1rem;
+  color: #343434;
+  margin-bottom: 0.5rem;
+}
+
+.errorMessage {
+  color: #d54646;
+  margin-top: 0.5rem;
+}
+

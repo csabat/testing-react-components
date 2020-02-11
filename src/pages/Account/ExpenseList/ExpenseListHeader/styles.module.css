@@ -2,4 +2,18 @@
   display: flex;
   justify-content: space-between;
   color: #3c7856;
+  margin-bottom: 1rem;
+}
+
+.detailsHeader > * {
+  flex: 1;
+  text-align: right;
+}
+
+.detailsHeader > :first-child {
+  text-align: left;
+}
+
+.description {
+  text-align: center;
 }

@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
 
-import Button, { ButtonType } from '../../components/Button/Button';
-import InputField from '../../components/InputField';
+import LoginForm from './LoginForm';
+import { useHistory } from 'react-router-dom';
 
 const styles = require('./styles.module.css');
 
 const Login: FC = () => {
+  const { push } = useHistory();
+  const onSubmit = (values) => push('/account');
+
   return (
     <div className={styles.main}>
       <div className={styles.pictureContainer}>
@@ -15,9 +17,7 @@ const Login: FC = () => {
       </div>
       <div className={styles.loginContainer}>
         <div className={styles.loginTitle}>Login to your personal account</div>
-        <InputField name="emailAddress"/>
-        <InputField name="password" />
-        <Link to={'/account'}><Button label="Submit" type={ButtonType.PRIMARY} onClick={() => {}}/></Link>
+        <LoginForm onSubmit={onSubmit} />
       </div>
     </div>
   );

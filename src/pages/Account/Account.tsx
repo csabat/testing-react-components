@@ -1,12 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import AccountTile from '../../components/AccountTile';
 import { AccountType } from '../../components/AccountTile/types';
 import AccountDetailsHeader from './AccountDetailsHeader';
 import ExpenseList from './ExpenseList';
+import Modal from '../../components/Modal';
+import PaymentForm from './PaymentForm';
 
 const styles = require('./styles.module.css');
 
 const Account: FC = () => {
+  const [type, setType] = useState<AccountType>(AccountType.DEBIT);
+
   const details = { 
     balance: 12489, 
     spent: 4098, 
@@ -21,20 +25,25 @@ const Account: FC = () => {
         <div className={styles.account}>
           <AccountTile 
             accountType={AccountType.DEBIT}
-            isActive={true}
+            isActive={AccountType.DEBIT === type}
+            onClick={() => setType(AccountType.DEBIT)}
           />
         </div>
         <div className={styles.account}>
           <AccountTile 
             accountType={AccountType.CREDIT}
-            isActive={false}
+            isActive={AccountType.CREDIT === type}
+            onClick={() => setType(AccountType.CREDIT)}
           />
         </div>
       </div>
       <div className={styles.header}>
-        <AccountDetailsHeader details={details} type={AccountType.DEBIT} />
+        <AccountDetailsHeader details={details} type={type} />
       </div>
       <ExpenseList />
+      <Modal>
+        <PaymentForm onSubmit={(values) => console.log(values)} />
+      </Modal>
     </div>
   )
 }

@@ -7,13 +7,14 @@ const styles = require('./styles.module.css');
 interface Props {
   accountType: AccountType;
   isActive: boolean;
+  onClick: () => void;
 }
 
-const AccountTile: FC<Props> = ({ accountType, isActive }) => {
+const AccountTile: FC<Props> = ({ accountType, isActive, onClick }) => {
 
   const tileClassNames = isActive ? styles.accountType : `${styles.accountType} ${styles.inactive}` ;
   return (
-    <div className={styles.accountTile}>
+    <div onClick={onClick} className={styles.accountTile}>
       <div className={tileClassNames}>{accountType}</div>
     </div>  
   );

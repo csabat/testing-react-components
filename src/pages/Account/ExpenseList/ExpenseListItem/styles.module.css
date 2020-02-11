@@ -1,0 +1,26 @@
+.expenseItem {
+  display: flex;
+  justify-content: space-between;
+  color: #272727;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+.expenseItem > * {
+  flex: 1;
+  text-align: right;
+}
+
+.expenseItem > :first-child {
+  text-align: left;
+}
+
+.expenseItem:hover {
+  background: #DCDEDE;
+  cursor: pointer;
+}
+
+.description {
+  color: #3c7856;
+  text-align: center;
+}

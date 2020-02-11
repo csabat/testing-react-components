@@ -23,3 +23,13 @@
   color: #727A7B;
   font-size: 1.25rem;
 }
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.largeButton {
+  padding: 0.5rem 2rem;
+  font-size: 1.25rem;
+}

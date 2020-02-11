@@ -1,0 +1,21 @@
+.detailsContainer {
+  padding: 1rem 0;
+}
+
+.detailsHeader {
+  font-size: 1.25rem;
+} 
+
+.detailsContent {
+  display: flex;
+}
+
+.detailsContent > div {
+  flex: 1;
+}
+
+.description {
+  color: #3c7856;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}

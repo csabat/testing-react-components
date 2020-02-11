@@ -9,17 +9,19 @@ export enum ButtonType {
 
 interface Props {
   label: string;
-  onClick: () => void;
-  type: ButtonType;
+  onClick?: () => void;
+  buttonType: ButtonType;
+  className?: string;
+  type?: "button" | "submit" | "reset";
 }
 
-const Button: FC<Props> = ({ label, onClick, type }) => {
+const Button: FC<Props> = ({ type = "button", label, onClick, buttonType, className = '' }) => {
   const buttonStyle = {
     [ButtonType.PRIMARY]: styles.primary,
     [ButtonType.SECONDARY]: styles.secondary,
   }
   return (
-    <button className={buttonStyle[type]} onClick={onClick}>
+    <button type={type} className={`${buttonStyle[buttonType]} ${className}`} onClick={onClick}>
       {label}
     </button>
   )

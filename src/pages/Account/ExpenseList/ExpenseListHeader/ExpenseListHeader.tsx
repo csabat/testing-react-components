@@ -6,7 +6,7 @@ const ExpenseListHeader = () => {
   return (
     <div className={styles.detailsHeader}>
       <div>DATE</div>
-      <div>DESCRIPTION</div>
+      <div className={styles.description}>DESCRIPTION</div>
       <div>TYPE</div>
       <div>IN ($)</div>
       <div>OUT ($)</div>
