@@ -6,13 +6,6 @@
   justify-content: center;
 }
 
-.welcome {
-  text-align: left;
-  color: #343434;
-  font-size: 2rem;
-  width: 100%;
-}
-
 .accounts {
   display: flex;
 }

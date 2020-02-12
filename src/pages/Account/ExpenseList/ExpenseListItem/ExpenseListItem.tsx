@@ -1,7 +1,9 @@
 import React, { FC, useState } from 'react';
-import { ExpenseItem, TransactionType, ExpenseType } from '../../types';
 import moment from 'moment';
+
+import { ExpenseItem, TransactionType, ExpenseType } from '../../types';
 import { dateFormat } from '../../../../utils/utils';
+
 import ExpenseDetails from './ExpenseDetails';
 
 const styles = require('./styles.module.css');

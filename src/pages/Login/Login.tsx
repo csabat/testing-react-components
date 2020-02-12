@@ -1,13 +1,18 @@
 import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import LoginForm from './LoginForm';
-import { useHistory } from 'react-router-dom';
+import useAuth from '../../utils/useAuth';
 
 const styles = require('./styles.module.css');
 
 const Login: FC = () => {
   const { push } = useHistory();
-  const onSubmit = (values) => push('/account');
+  const { setAccountUuid } = useAuth();
+  const onSubmit = (values) => {
+    setAccountUuid('12345');
+    push('/account');
+  };
 
   return (
     <div className={styles.main}>

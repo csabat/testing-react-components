@@ -1,5 +1,4 @@
 .inputField {
-  width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
   border-color:  #bbbbbb;
@@ -10,4 +9,9 @@
 
 .container {
   width: 100%;
+}
+
+.container > div:first-child { 
+  display: flex;
+  flex-direction: column;
 }

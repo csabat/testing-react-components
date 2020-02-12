@@ -1,15 +1,23 @@
 import React, { FC, useState } from 'react';
-import AccountTile from '../../components/AccountTile';
+
 import { AccountType } from '../../components/AccountTile/types';
+
+import AccountTile from '../../components/AccountTile';
 import AccountDetailsHeader from './AccountDetailsHeader';
 import ExpenseList from './ExpenseList';
 import Modal from '../../components/Modal';
 import PaymentForm from './PaymentForm';
+import PageTitle from '../../components/PageTitle';
 
 const styles = require('./styles.module.css');
 
 const Account: FC = () => {
   const [type, setType] = useState<AccountType>(AccountType.DEBIT);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const closeModal = () => setIsModalOpen(false);
+
+  const openModal = () => setIsModalOpen(true);
 
   const details = { 
     balance: 12489, 
@@ -18,9 +26,10 @@ const Account: FC = () => {
     sortCode: '54-32-12',
     accountNumber: '3877282761',
   }
+
   return (
     <div className={styles.accountContainer}>
-      <h2 className={styles.welcome}>Welcome back, Mr. Example!</h2>
+      <PageTitle>Welcome back, Mr. Example!</PageTitle>
       <div className={styles.accounts}>
         <div className={styles.account}>
           <AccountTile 
@@ -38,11 +47,12 @@ const Account: FC = () => {
         </div>
       </div>
       <div className={styles.header}>
-        <AccountDetailsHeader details={details} type={type} />
+        <AccountDetailsHeader onMakePaymentClick={openModal} details={details} type={type} />
       </div>
       <ExpenseList />
-      <Modal>
-        <PaymentForm onSubmit={(values) => console.log(values)} />
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <PageTitle>Make a payment</PageTitle>
+        <PaymentForm onCancel={closeModal} onSubmit={(values) => console.log(values)} />
       </Modal>
     </div>
   )

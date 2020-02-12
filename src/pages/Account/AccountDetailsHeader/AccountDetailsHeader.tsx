@@ -2,14 +2,16 @@ import React, { FC } from 'react';
 
 import { AccountDetails } from '../types';
 import { AccountType } from '../../../components/AccountTile/types';
-import Button from '../../../components/Button';
 import { ButtonType } from '../../../components/Button/Button';
+
+import Button from '../../../components/Button';
 
 const styles = require('./styles.module.css');
 
 interface Props {
   details: AccountDetails;
   type: AccountType;
+  onMakePaymentClick: () => void;
 };
 
 const accountLabel = {
@@ -17,7 +19,7 @@ const accountLabel = {
   [AccountType.CREDIT]: 'GENEROUS BANK NEVERENDING MASTERCARD',
 }
 
-const AccountDetailsHeader: FC<Props> = ({ details, type }) => {
+const AccountDetailsHeader: FC<Props> = ({ details, type, onMakePaymentClick }) => {
   const { balance, spent, available, sortCode, accountNumber } = details;
 
   return (
@@ -30,7 +32,7 @@ const AccountDetailsHeader: FC<Props> = ({ details, type }) => {
       <div className={styles.subTotal}>Spent this month: ${spent}</div>
     </div>
     <div>
-      <Button className={styles.largeButton} onClick={() => {}} buttonType={ButtonType.PRIMARY} label="Make Payment" />
+      <Button className={styles.largeButton} onClick={onMakePaymentClick} buttonType={ButtonType.PRIMARY} label="Make Payment" />
     </div>
     </div>
   );

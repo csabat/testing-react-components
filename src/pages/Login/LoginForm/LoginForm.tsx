@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+
+import { ButtonType } from '../../../components/Button/Button';
+
 import InputField from '../../../components/InputField';
 import Button from '../../../components/Button';
-import { ButtonType } from '../../../components/Button/Button';
-import * as Yup from 'yup';
 
 interface Props {
   onSubmit: (values: LoginValues) => void;

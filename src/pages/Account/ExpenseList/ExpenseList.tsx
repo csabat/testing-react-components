@@ -1,7 +1,9 @@
 import React from 'react';
+
+import { ExpenseType } from '../types';
+
 import ExpenseListHeader from './ExpenseListHeader';
 import ExpenseListItem from './ExpenseListItem';
-import { ExpenseType } from '../types';
 
 const styles = require('./styles.module.css');
 

@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from 'react';
+import React, { FC } from 'react';
 import FormField from '../FormField/FormField';
 
 const styles = require('./styles.module.css');
