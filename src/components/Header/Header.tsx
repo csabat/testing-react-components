@@ -16,18 +16,22 @@ const Header: FC = () => {
     push('./login');
   }
 
+  const onPrivacyHandler = () => push('/privacy');
+
   const shouldDisplayOptions = !!getAccountUuid();
+
+  const handleLogoClick = () => push('/account');
 
   return (
     <header className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.bankLogo}>
+        <div onClick={handleLogoClick} className={styles.bankLogo}>
           <Logo /><span className={styles.bank}>Generous Bank</span>
         </div>
         <div className={styles.links}>
           {shouldDisplayOptions && (
             <>
-              <span>Privacy</span>
+              <span onClick={onPrivacyHandler}>Privacy</span>
               <span onClick={logout}>Logout</span>
             </>
           )}

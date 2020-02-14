@@ -1,0 +1,10 @@
+.privacyContainer {
+  width: 60%;
+  margin: auto;
+  padding-top: 5rem;
+  justify-content: center;
+}
+
+.privacyContainer > p {
+  margin-bottom: 1rem;
+}

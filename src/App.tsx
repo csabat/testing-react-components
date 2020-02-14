@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Login from './pages/Login';
 import Account from './pages/Account';
 import ProtectedRoute from './components/ProtectedRoute';
+import Privacy from './pages/Privacy';
 
 const styles = require('./styles.module.css');
 
@@ -24,6 +25,9 @@ const App: React.FC = () => {
           </Route>
           <ProtectedRoute path='/account'>
             <Account />
+          </ProtectedRoute>
+          <ProtectedRoute path='/privacy'>
+            <Privacy />
           </ProtectedRoute>
           <Redirect to="/login" />
         </Switch>
