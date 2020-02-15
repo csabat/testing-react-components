@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
   amount: Yup.number().positive().required('Please specify amount')
 })
 
-interface PaymentFormValues {
+export interface PaymentFormValues {
   accountNumber: string;
   sortCode: string;
   payeeName: string;

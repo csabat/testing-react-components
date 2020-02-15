@@ -1,4 +1,4 @@
 export enum AccountType {
-  DEBIT = 'Debit',
-  CREDIT = 'Credit',
+  DEBIT = 'DEBIT',
+  CREDIT = 'CREDIT',
 }

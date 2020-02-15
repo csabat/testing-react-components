@@ -5,6 +5,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 import Header from './components/Header';
 import Login from './pages/Login';
@@ -14,25 +16,31 @@ import Privacy from './pages/Privacy';
 
 const styles = require('./styles.module.css');
 
+const client = new ApolloClient({
+  uri: 'http://localhost:4000',
+});
+
 const App: React.FC = () => {
   return (
-    <div className={styles.container}>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path='/login'>
-            <Login />
-          </Route>
-          <ProtectedRoute path='/account'>
-            <Account />
-          </ProtectedRoute>
-          <ProtectedRoute path='/privacy'>
-            <Privacy />
-          </ProtectedRoute>
-          <Redirect to="/login" />
-        </Switch>
-      </Router>
-    </div>
+    <ApolloProvider client={client}>
+      <div className={styles.container}>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path='/login'>
+              <Login />
+            </Route>
+            <ProtectedRoute path='/account'>
+              <Account />
+            </ProtectedRoute>
+            <ProtectedRoute path='/privacy'>
+              <Privacy />
+            </ProtectedRoute>
+            <Redirect to="/login" />
+          </Switch>
+        </Router>
+      </div>
+    </ApolloProvider>
   );
 }
 
