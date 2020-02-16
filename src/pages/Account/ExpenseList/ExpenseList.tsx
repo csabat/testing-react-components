@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import { ExpenseType } from '../types';
+import { ExpenseType, ExpenseItem } from '../types';
 import { useQuery } from '@apollo/react-hooks';
 
 import ExpenseListHeader from './ExpenseListHeader';
 import ExpenseListItem from './ExpenseListItem';
 import Spinner from '../../../components/Spinner';
 import GET_EXPENSE_ITEMS from '../queries/getExpenseItems';
+import { AccountType } from '../../../components/AccountTile/types';
 
 const styles = require('./styles.module.css');
 
-const ExpenseList = () => {
-  const { loading, error, data } = useQuery(GET_EXPENSE_ITEMS, { variables: { type: "DEBIT" }});
+interface Props {
+  type: AccountType;
+}
+
+const ExpenseList: FC<Props> = ({ type }) => {
+  const { loading, error, data } = useQuery(GET_EXPENSE_ITEMS, { variables: { type }});
   
   if (loading) {
     return <Spinner />
@@ -21,14 +26,19 @@ const ExpenseList = () => {
     return <div>Something went wrong... Please refresh the page.</div>
   }
 
-  console.log(data);
+  const shouldRenderTransactions = data && data.getExpenseItems && data.getExpenseItems.length !== 0;
+  const renderList = (items: ExpenseItem[]) => items.map((item) => <ExpenseListItem item={item} />)
 
   return (
     <div className={styles.expenseContainer}>
-      <div className={styles.title}>Statement</div>
-      <div className={styles.listHeader}>All Transactions</div>
-      <ExpenseListHeader />
-      <ExpenseListItem item={{ date: "2020-02-02", description: 'WIN BANK TRANSFER', type: ExpenseType.BNS, incoming: 0, outgoing: 260.44, balance: 2015.32 }} />
+      {shouldRenderTransactions && (
+        <>
+          <div className={styles.title}>Statement</div>
+          <div className={styles.listHeader}>All Transactions</div>
+          <ExpenseListHeader />
+          {renderList(data.getExpenseItems)}
+        </>
+      )}
     </div>
   )
 };

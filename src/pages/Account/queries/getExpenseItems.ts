@@ -9,6 +9,14 @@ const GET_EXPENSE_ITEMS = gql`
       incoming
       outgoing
       balance
+      details {
+        amount
+        transactionType 
+        payeeName
+        reference
+        accountNumber
+        sortCode
+      }
     }
   }
 `

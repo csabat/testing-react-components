@@ -8,6 +8,7 @@ interface ExpenseListItem {
   incoming: number;
   outgoing: number;
   balance: number;
+  details: Payment;
 }
 
 interface Payment {
@@ -16,11 +17,16 @@ interface Payment {
   sortCode: string;
   reference: string;
   amount: number;
+  transactionType: TransactionType;
 }
 
 enum CardType {
   CREDIT = "CREDIT",
   DEBIT = "DEBIT",
+}
+
+enum TransactionType {
+  ONLINE = "ONLINE TRANSACTION"
 }
 
 class Card {
@@ -45,9 +51,15 @@ class Card {
   }
 
   private calculateTotals(amount: number) {
-    this.spent = this.spent + amount;
-    this.balance = this.balance - amount;
-    this.available = this.available - amount;
+    if (this.type === CardType.CREDIT) {
+      this.available = this.available - amount;
+      this.balance = this.balance + amount;
+    }
+
+    if(this.type === CardType.DEBIT) {
+      this.spent = this.spent + amount;
+      this.balance = this.balance - amount;
+    }
   };
 
   private createExpenseItem(values: Payment): ExpenseListItem {
@@ -57,7 +69,8 @@ class Card {
       type: this.type,
       incoming: 0,
       outgoing: values.amount,
-      balance: this.available,
+      balance: this.balance,
+      details: values,
     }
   }
 
@@ -93,6 +106,15 @@ const typeDefs = `
     incoming: Float
     outgoing: Float
     balance: Float
+    details: Payment
+  }
+  type Payment {
+    payeeName: String
+    accountNumber: String
+    sortCode: String
+    reference: String
+    amount: Float
+    transactionType: String
   }
   input PaymentInput {
     payeeName: String
@@ -100,6 +122,7 @@ const typeDefs = `
     sortCode: String
     reference: String
     amount: Float
+    transactionType: String
   }
   input ExpenseItemInput {
     date: String

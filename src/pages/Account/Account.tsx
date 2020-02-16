@@ -22,7 +22,8 @@ const Account: FC = () => {
   const [makePayment] = useMutation(MAKE_PAYMENT, 
     {
       refetchQueries: [{ query: GET_EXPENSE_ITEMS, variables: { type } }, { query: GET_ACCOUNT_DETAILS, variables: { type }}],
-      awaitRefetchQueries: true, 
+      awaitRefetchQueries: true,
+      onCompleted: () => closeModal(), 
     })
 
   const closeModal = () => setIsModalOpen(false);
@@ -61,9 +62,9 @@ const Account: FC = () => {
         </div>
       </div>
       <div className={styles.header}>
-        <AccountDetailsHeader onMakePaymentClick={openModal} details={details} type={type} />
+        <AccountDetailsHeader onMakePaymentClick={openModal} type={type} />
       </div>
-      <ExpenseList />
+      <ExpenseList type={type}/>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <PageTitle>Make a payment</PageTitle>
         <PaymentForm onCancel={closeModal} onSubmit={onSubmit} />

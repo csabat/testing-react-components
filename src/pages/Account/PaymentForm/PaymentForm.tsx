@@ -6,6 +6,7 @@ import { ButtonType } from '../../../components/Button/Button';
 
 import InputField from '../../../components/InputField';
 import Button from '../../../components/Button';
+import { TransactionType } from '../types';
 
 const validationSchema = Yup.object().shape({
   accountNumber: Yup.string().required('Please provide account number'),
@@ -21,6 +22,7 @@ export interface PaymentFormValues {
   payeeName: string;
   reference: string;
   amount: number;
+  transactionType: TransactionType
 }
 
 const initialValues = {
@@ -29,6 +31,7 @@ const initialValues = {
   payeeName: '',
   reference: '',
   amount: 0,
+  transactionType: TransactionType.ONLINE
 }
 
 const styles = require('./styles.module.css');

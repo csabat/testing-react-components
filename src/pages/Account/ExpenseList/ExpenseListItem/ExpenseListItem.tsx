@@ -12,7 +12,7 @@ interface Props {
   item: ExpenseItem;
 }
 
-const ExpenseListItem: FC<Props> = ({ item: { date, description, type, incoming, outgoing, balance } }) => {
+const ExpenseListItem: FC<Props> = ({ item: { date, description, type, incoming, outgoing, balance, details } }) => {
   const [expanded, setExpanded] = useState(false);
 
   const toggleRow = () => setExpanded(!expanded);
@@ -29,11 +29,7 @@ const ExpenseListItem: FC<Props> = ({ item: { date, description, type, incoming,
       </div>
       {expanded && (
         <ExpenseDetails
-          transactionType={TransactionType.IN}
-          id={'32341'}
-          description={'WIZZ AIR HBLSK'}
-          type={ExpenseType.BNS}
-          amount={4321}
+          details={details}
         />
       )}
     </> 

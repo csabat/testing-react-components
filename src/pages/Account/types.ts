@@ -7,8 +7,7 @@ export interface AccountDetails {
 }
 
 export enum TransactionType {
-  IN,
-  OUT,
+  ONLINE = "ONLINE TRANSACTION"
 }
 
 export enum ExpenseType {
@@ -28,13 +27,14 @@ export interface ExpenseItem {
   incoming?: number;
   outgoing?: number;
   balance: number;
+  details: ExpenseItemDetails;
 }
 
 export interface ExpenseItemDetails {
-  type: ExpenseType
-  name: string;
-  businessType: string;
-  businessLocation: string;
-  cardNumber: string;
-  date: string;
+  payeeName: string;
+  accountNumber: string;
+  sortCode: string;
+  reference: string;
+  amount: number;
+  transactionType: TransactionType;
 }
