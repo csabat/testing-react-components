@@ -3,24 +3,24 @@ import { useHistory } from 'react-router-dom';
 
 import { ReactComponent as Logo } from './logo.svg';
 
-import useAuth from '../../utils/useAuth';
+import auth from '../../utils/auth';
 
 const styles = require('./styles.module.css');
 
 const Header: FC = () => {
-  const { getAccountUuid, setAccountUuid } = useAuth();
+  const { getAccountUuid, setAccountUuid } = auth();
   const { push } = useHistory();
   
-  const logout = async () => {
-    await setAccountUuid("");
+  const shouldDisplayOptions = !!getAccountUuid();
+  
+  const onPrivacyHandler = () => push('/privacy');
+  
+  const handleLogoClick = () => push('/account');
+
+  const logout = () => {
+    setAccountUuid("");
     push('./login');
   }
-
-  const onPrivacyHandler = () => push('/privacy');
-
-  const shouldDisplayOptions = !!getAccountUuid();
-
-  const handleLogoClick = () => push('/account');
 
   return (
     <header className={styles.container}>

@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import { ExpenseType, ExpenseItem } from '../types';
+import { ExpenseItem } from '../types';
 import { useQuery } from '@apollo/react-hooks';
+import { AccountType } from '../../../components/AccountTile/types';
 
 import ExpenseListHeader from './ExpenseListHeader';
 import ExpenseListItem from './ExpenseListItem';
 import Spinner from '../../../components/Spinner';
 import GET_EXPENSE_ITEMS from '../queries/getExpenseItems';
-import { AccountType } from '../../../components/AccountTile/types';
 
 const styles = require('./styles.module.css');
 

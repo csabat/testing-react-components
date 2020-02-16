@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
 
 import { AccountType } from '../../components/AccountTile/types';
 import { PaymentFormValues } from './PaymentForm/PaymentForm';
@@ -9,7 +10,6 @@ import ExpenseList from './ExpenseList';
 import Modal from '../../components/Modal';
 import PaymentForm from './PaymentForm';
 import PageTitle from '../../components/PageTitle';
-import { useMutation } from '@apollo/react-hooks';
 import MAKE_PAYMENT from './mutations/makePayment';
 import GET_EXPENSE_ITEMS from './queries/getExpenseItems';
 import GET_ACCOUNT_DETAILS from './queries/getAccountDetails';

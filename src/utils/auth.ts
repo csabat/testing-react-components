@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-
-const useAuth = () => {
+const auth = () => {
   const getAccountUuid = () => window.localStorage.getItem('accountUuid');
 
   const setAccountUuid = (uuid: string | null) => {
@@ -10,4 +8,4 @@ const useAuth = () => {
   return { getAccountUuid, setAccountUuid };
 };
 
-export default useAuth;
+export default auth;

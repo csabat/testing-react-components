@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import cx from 'classnames';
 
 const styles = require('./styles.module.css');
 
@@ -16,12 +17,13 @@ interface Props {
 }
 
 const Button: FC<Props> = ({ type = "button", label, onClick, buttonType, className = '' }) => {
-  const buttonStyle = {
-    [ButtonType.PRIMARY]: styles.primary,
-    [ButtonType.SECONDARY]: styles.secondary,
-  }
+  const buttonClassNames = cx({
+    [styles.primary]: buttonType === ButtonType.PRIMARY,
+    [styles.secondary]: buttonType === ButtonType.SECONDARY,
+  }, className);
+
   return (
-    <button type={type} className={`${buttonStyle[buttonType]} ${className}`} onClick={onClick}>
+    <button type={type} className={buttonClassNames} onClick={onClick}>
       {label}
     </button>
   )

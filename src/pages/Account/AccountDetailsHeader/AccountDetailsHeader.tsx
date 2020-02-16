@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
+import { useQuery } from '@apollo/react-hooks';
 
-import { AccountDetails } from '../types';
 import { AccountType } from '../../../components/AccountTile/types';
 import { ButtonType } from '../../../components/Button/Button';
-import GET_ACCOUNT_DETAILS from '../queries/getAccountDetails';
 
+import GET_ACCOUNT_DETAILS from '../queries/getAccountDetails';
 import Button from '../../../components/Button';
-import { useQuery } from '@apollo/react-hooks';
 import Spinner from '../../../components/Spinner';
 
 const styles = require('./styles.module.css');
@@ -22,7 +21,6 @@ const accountLabel = {
 }
 
 const AccountDetailsHeader: FC<Props> = ({ type, onMakePaymentClick }) => {
-  console.log(type)
   const { loading, error, data } = useQuery(GET_ACCOUNT_DETAILS, { variables: { type } });
 
   const renderAccountDetails = (cardDetails) => {
@@ -33,19 +31,32 @@ const AccountDetailsHeader: FC<Props> = ({ type, onMakePaymentClick }) => {
       <>
         <div>
           <span className={styles.cardType}>{accountLabel[type]}</span>
-          <span className={styles.codes}>{sortCode} {accountNumber}</span>
-          <div className={styles.total}>${balance}</div>
-          {isCredit && <div className={styles.subTotal}>Available: ${available}</div>}
-          <div className={styles.subTotal}>Spent this month: ${spent}</div>
+          <span className={styles.codes}>
+            {sortCode} {accountNumber}
+          </span>
+          <div className={styles.total}>
+            ${balance}
+          </div>
+          {isCredit && (
+            <div className={styles.subTotal}>
+              Available: ${available}
+            </div>
+          )}
+          <div className={styles.subTotal}>
+            Spent this month: ${spent}
+          </div>
         </div>
         <div>
-          <Button className={styles.largeButton} onClick={onMakePaymentClick} buttonType={ButtonType.PRIMARY} label="Make Payment" />
+          <Button 
+            className={styles.largeButton} 
+            onClick={onMakePaymentClick} 
+            buttonType={ButtonType.PRIMARY} 
+            label="Make Payment" 
+          />
         </div>
       </>
     )
   }
-    
-  
 
   return (
     <div className={styles.headerContainer}>

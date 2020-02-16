@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import moment from 'moment';
 
-import { ExpenseItem, TransactionType, ExpenseType } from '../../types';
+import { ExpenseItem } from '../../types';
 import { dateFormat } from '../../../../utils/utils';
 
 import ExpenseDetails from './ExpenseDetails';

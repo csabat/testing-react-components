@@ -3,10 +3,10 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 
 import { ButtonType } from '../../../components/Button/Button';
+import { TransactionType } from '../types';
 
 import InputField from '../../../components/InputField';
 import Button from '../../../components/Button';
-import { TransactionType } from '../types';
 
 const validationSchema = Yup.object().shape({
   accountNumber: Yup.string().required('Please provide account number'),
@@ -62,8 +62,18 @@ const PaymentForm: FC<Props> = ({ onSubmit, onCancel }) => {
           </div>
           <InputField name="amount" type="number" />
           <div className={styles.formRow}>
-            <Button label="Cancel" buttonType={ButtonType.SECONDARY} className={styles.paymentFormButton} onClick={onCancel} />
-            <Button label="Submit" buttonType={ButtonType.PRIMARY} type="submit" className={styles.paymentFormButton} />
+            <Button 
+              label="Cancel" 
+              buttonType={ButtonType.SECONDARY} 
+              className={styles.paymentFormButton} 
+              onClick={onCancel} 
+            />
+            <Button 
+              label="Submit" 
+              buttonType={ButtonType.PRIMARY} 
+              type="submit" 
+              className={styles.paymentFormButton} 
+            />
           </div>
         </Form>
         )}

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import { ExpenseItemDetails } from '../../../types';
 
 const styles = require('./styles.module.css');

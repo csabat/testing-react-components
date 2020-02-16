@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import cx from 'classnames';
 
 import { AccountType } from './types';
 
@@ -11,8 +12,8 @@ interface Props {
 }
 
 const AccountTile: FC<Props> = ({ accountType, isActive, onClick }) => {
-  const tileClassNames = isActive ? styles.accountType : `${styles.accountType} ${styles.inactive}` ;
-  
+  const tileClassNames = cx({ [styles.inactive]: !isActive }, styles.accountType);
+
   return (
     <div onClick={onClick} className={styles.accountTile}>
       <div className={tileClassNames}>{accountType}</div>

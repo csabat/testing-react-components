@@ -1,13 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import PageTitle from '../../components/PageTitle';
 
 const styles = require('./styles.module.css');
 
-interface Props {
-
-}
-
-const Privacy: FC<Props> = () => {
+const Privacy = () => {
   return (
     <div className={styles.privacyContainer}>
       <PageTitle>Privacy Policy</PageTitle>

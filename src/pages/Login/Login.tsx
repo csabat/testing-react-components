@@ -2,14 +2,14 @@ import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import LoginForm from './LoginForm';
-import useAuth from '../../utils/useAuth';
+import auth from '../../utils/auth';
 
 const styles = require('./styles.module.css');
 
 const Login: FC = () => {
   const { push } = useHistory();
-  const { setAccountUuid } = useAuth();
-  const onSubmit = (values) => {
+  const { setAccountUuid } = auth();
+  const onSubmit = () => {
     setAccountUuid('12345');
     push('/account');
   };

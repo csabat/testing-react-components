@@ -1,3 +1,5 @@
+import { AccountType } from "../../components/AccountTile/types";
+
 export interface AccountDetails {
   balance: number;
   available: number;
@@ -10,20 +12,10 @@ export enum TransactionType {
   ONLINE = "ONLINE TRANSACTION"
 }
 
-export enum ExpenseType {
-  BNS = "Bonus",
-  BP = "Bill Payment",
-  CHG = "Charge",
-  CSH = "Cash",
-  DD = "Direct Debit",
-  DEB = "Debit Card",
-  DEP = "Deposit",
-}
-
 export interface ExpenseItem {
   date: string;
   description: string;
-  type: ExpenseType;
+  type: AccountType;
   incoming?: number;
   outgoing?: number;
   balance: number;
