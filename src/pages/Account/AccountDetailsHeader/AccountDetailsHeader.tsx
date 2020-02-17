@@ -24,13 +24,13 @@ const AccountDetailsHeader: FC<Props> = ({ type, onMakePaymentClick }) => {
   const { loading, error, data } = useQuery(GET_ACCOUNT_DETAILS, { variables: { type } });
 
   const renderAccountDetails = (cardDetails) => {
-    const { balance, spent, available, sortCode, accountNumber } = cardDetails;
+    const { balance, spent, available, sortCode, accountNumber, name } = cardDetails;
     const isCredit = type === AccountType.CREDIT;
 
     return (
       <>
         <div>
-          <span className={styles.cardType}>{accountLabel[type]}</span>
+          <span className={styles.cardType}>{name}</span>
           <span className={styles.codes}>
             {sortCode} {accountNumber}
           </span>

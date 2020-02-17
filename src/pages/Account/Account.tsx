@@ -34,14 +34,6 @@ const Account: FC = () => {
     makePayment({ variables: { values, type }});
   }
 
-  const details = { 
-    balance: 12489, 
-    spent: 4098, 
-    available: 3999,
-    sortCode: '54-32-12',
-    accountNumber: '3877282761',
-  }
-
   return (
     <div className={styles.accountContainer}>
       <PageTitle>Welcome back, Mr. Example!</PageTitle>
