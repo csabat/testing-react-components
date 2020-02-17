@@ -9,6 +9,7 @@ const styles = require('./styles.module.css');
 const Login: FC = () => {
   const { push } = useHistory();
   const { setAccountUuid } = auth();
+
   const onSubmit = () => {
     setAccountUuid('12345');
     push('/account');
@@ -16,7 +17,7 @@ const Login: FC = () => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.pictureContainer}>
+      <div data-testid="picture" className={styles.pictureContainer}>
         <div className={styles.title}>Generous Bank</div>
         <div className={styles.subtitle}>Values we trust.</div>
       </div>

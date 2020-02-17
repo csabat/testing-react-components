@@ -8,17 +8,19 @@ interface Props {
   type?: string;
 }
 
-const InputField: FC<Props> = ({ name, type = "text" }) => {
+const InputField: FC<Props> = ({ name, type = "text", ...rest }) => {
   return (
     <div className={styles.container}>
       <FormField name={name}>
         {(field, form) => (
           <input 
             {...field}
+            {...rest}
             onChange={form.handleChange}
             name={name}
             className={styles.inputField}
             type={type}
+            error={''}
           />
         )}
       </FormField>

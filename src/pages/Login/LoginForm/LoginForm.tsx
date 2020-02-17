@@ -7,10 +7,6 @@ import { ButtonType } from '../../../components/Button/Button';
 import InputField from '../../../components/InputField';
 import Button from '../../../components/Button';
 
-interface Props {
-  onSubmit: (values: LoginValues) => void;
-}
-
 interface LoginValues {
   emailAddress: string;
   password: string;
@@ -28,6 +24,10 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required('Password is required.')
 });
 
+interface Props {
+  onSubmit: (values: LoginValues) => void;
+}
+
 const LoginForm: FC<Props> = ({ onSubmit }) => {
   return (
     <Formik<LoginValues>
@@ -37,14 +37,16 @@ const LoginForm: FC<Props> = ({ onSubmit }) => {
     >
       {() => (
         <Form>
-          <InputField type="email" name="emailAddress"/>
-          <InputField type="password" name="password" />
+          <InputField data-testid="emailField" type="email" name="emailAddress"/>
+          <InputField data-testid="passwordField" type="password" name="password" />
           <Button className={styles.loginButton} label="Submit" type="submit" buttonType={ButtonType.PRIMARY} />
         </Form>
       )}
-
     </Formik>
   )
 }
 
 export default LoginForm;
+
+
+//refactor initalvalues and name to present flexibility in test.
