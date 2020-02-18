@@ -8,7 +8,7 @@ jest.mock('./pages/Account', () => () => <div>Account Page</div>)
 
 const subject = () => render(<MemoryRouter><App /></MemoryRouter>);
 
-const login = (queryByTestId, queryByText) => {
+export const login = (queryByTestId, queryByText) => {
   // const email = container.querySelector("[name=emailAddress]");
   // const password = container.querySelector("[name=password]");
   // const submitButton = container.querySelector('.loginButton');

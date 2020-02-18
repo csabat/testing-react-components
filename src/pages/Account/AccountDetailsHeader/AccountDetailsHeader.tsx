@@ -15,11 +15,6 @@ interface Props {
   onMakePaymentClick: () => void;
 };
 
-const accountLabel = {
-  [AccountType.DEBIT]: 'CLASSIC',
-  [AccountType.CREDIT]: 'GENEROUS BANK NEVERENDING MASTERCARD',
-}
-
 const AccountDetailsHeader: FC<Props> = ({ type, onMakePaymentClick }) => {
   const { loading, error, data } = useQuery(GET_ACCOUNT_DETAILS, { variables: { type } });
 
@@ -61,7 +56,7 @@ const AccountDetailsHeader: FC<Props> = ({ type, onMakePaymentClick }) => {
   return (
     <div className={styles.headerContainer}>
       {loading && <Spinner />}
-      {!!error && <div>Something went wront, please refresh the page.</div>}
+      {!!error && <div>Something went wrong, please refresh the page.</div>}
       {!!data && data.getCardDetails && renderAccountDetails(data.getCardDetails)}
     </div>
   );

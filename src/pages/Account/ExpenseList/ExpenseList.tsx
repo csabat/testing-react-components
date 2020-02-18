@@ -19,15 +19,15 @@ const ExpenseList: FC<Props> = ({ type }) => {
   const { loading, error, data } = useQuery(GET_EXPENSE_ITEMS, { variables: { type }});
   
   if (loading) {
-    return <Spinner />
-  }
+    return <Spinner />;
+  };
   
   if (!!error) {
-    return <div>Something went wrong... Please refresh the page.</div>
-  }
+    return <div>Something went wrong... Please refresh the page.</div>;
+  };
 
   const shouldRenderTransactions = data && data.getExpenseItems && data.getExpenseItems.length !== 0;
-  const renderList = (items: ExpenseItem[]) => items.map((item) => <ExpenseListItem item={item} />)
+  const renderList = (items: ExpenseItem[]) => items.map((item) => <ExpenseListItem item={item} />);
 
   return (
     <div className={styles.expenseContainer}>
@@ -40,7 +40,7 @@ const ExpenseList: FC<Props> = ({ type }) => {
         </>
       )}
     </div>
-  )
+  );
 };
 
 export default ExpenseList;
