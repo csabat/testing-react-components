@@ -10,7 +10,7 @@ export enum ButtonType {
 
 interface Props {
   label: string;
-  onClick?: () => void;
+  onClick?: (values?: any) => void;
   buttonType: ButtonType;
   className?: string;
   type?: "button" | "submit" | "reset";

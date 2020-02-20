@@ -30,8 +30,8 @@ const Account: FC = () => {
 
   const openModal = () => setIsModalOpen(true);
 
-  const onSubmit = (values: PaymentFormValues) => {
-    makePayment({ variables: { values, type }});
+  const onSubmit = async (values: PaymentFormValues) => {
+    await makePayment({ variables: { values, type }});
   }
 
   return (

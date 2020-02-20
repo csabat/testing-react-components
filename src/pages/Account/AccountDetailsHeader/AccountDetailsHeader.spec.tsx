@@ -11,12 +11,13 @@ const mockPaymentClick = jest.fn();
 
 
 const subject = (type = AccountType.DEBIT, error = false) => {
+  const sortCode = type === AccountType.CREDIT ? "" : '123-123-123';
   const data = {
     getCardDetails: {
       balance: 1200, 
       spent: 0, 
       available: 0, 
-      sortCode: '123-123-123', 
+      sortCode, 
       accountNumber: '1223456', 
       name: type,
     }
@@ -61,6 +62,7 @@ describe('AccountDetailsHeader', () => {
       expect(queryByText(/spent this month/i)).not.toBeNull();
       expect(queryByText(/123-123-123/i)).not.toBeNull();
       expect(queryByText(/1223456/i)).not.toBeNull();
+      expect(queryByText(/available/i)).toBeNull();
     });
   });
 
@@ -72,6 +74,7 @@ describe('AccountDetailsHeader', () => {
       expect(queryByText(/spent this month/i)).not.toBeNull();
       expect(queryByText(/available/i)).not.toBeNull();
       expect(queryByText(/1223456/i)).not.toBeNull();
+      expect(queryByText(/123-123-123/i)).toBeNull();
     });
   });
 });

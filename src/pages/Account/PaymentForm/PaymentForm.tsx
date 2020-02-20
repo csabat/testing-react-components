@@ -71,7 +71,7 @@ const PaymentForm: FC<Props> = ({ onSubmit, onCancel }) => {
             <Button 
               label="Submit" 
               buttonType={ButtonType.PRIMARY} 
-              type="submit" 
+              type="submit"
               className={styles.paymentFormButton} 
             />
           </div>

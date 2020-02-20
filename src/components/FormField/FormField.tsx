@@ -31,7 +31,7 @@ const FormField: FC<Props> = (props) => {
     }
 
     return (
-      <p className={styles.label}>{startCase(name)}</p>
+      <label htmlFor={name} className={styles.label}>{startCase(name)}</label>
     );
   };
 
@@ -43,7 +43,7 @@ const FormField: FC<Props> = (props) => {
       render={({ field, form }) => {
         const fieldName = field.name;
         const hasError = get(form.touched, fieldName) && !!get(form.errors, fieldName);
-        const newProps = { ...field, label, error: hasError, ...rest };
+        const newProps = { ...field, label, id: name, error: hasError, ...rest };
   
         return (
           <div className={className}>

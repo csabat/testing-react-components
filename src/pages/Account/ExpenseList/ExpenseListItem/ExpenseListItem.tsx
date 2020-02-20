@@ -19,7 +19,7 @@ const ExpenseListItem: FC<Props> = ({ item: { date, description, type, incoming,
 
   return (
     <>
-      <div className={styles.expenseItem} onClick={toggleRow}>
+      <div className={styles.expenseItem} data-testid="row" onClick={toggleRow}>
         <div>{moment(date).format(dateFormat)}</div>
         <div className={styles.description}>{description.toUpperCase()}</div>
         <div>{type}</div>

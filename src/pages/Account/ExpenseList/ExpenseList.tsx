@@ -27,7 +27,7 @@ const ExpenseList: FC<Props> = ({ type }) => {
   };
 
   const shouldRenderTransactions = data && data.getExpenseItems && data.getExpenseItems.length !== 0;
-  const renderList = (items: ExpenseItem[]) => items.map((item) => <ExpenseListItem item={item} />);
+  const renderList = (items: ExpenseItem[]) => items.map((item, i) => <ExpenseListItem key={i} item={item} />);
 
   return (
     <div className={styles.expenseContainer}>
