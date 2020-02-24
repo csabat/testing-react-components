@@ -54,6 +54,7 @@ class Card {
     if (this.type === CardType.CREDIT) {
       this.available = this.available - amount;
       this.balance = this.balance + amount;
+      this.spent = this.spent + amount;
     }
 
     if(this.type === CardType.DEBIT) {

@@ -15,6 +15,8 @@ describe('ExpenseDetails', () => {
   it('renders the details', () => {
     const { queryByText } = render(<ExpenseDetails details={details} />)
     
+    // you can go for more specific assert involving the values you passed down
+    
     expect(queryByText(/transaction type/i)).not.toBeNull();
     expect(queryByText(/payee name/i)).not.toBeNull();
     expect(queryByText(/account number/i)).not.toBeNull();

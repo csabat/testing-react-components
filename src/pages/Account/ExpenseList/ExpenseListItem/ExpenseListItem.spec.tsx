@@ -9,10 +9,15 @@ const subject = () => render(<ExpenseListItem item={item} />)
 
 describe('ExpenseListItem', () => {
   it('renders the item', () => {
-    const { getByTestId } = subject();
-    const item = getByTestId('row');
+    const { getByTestId, queryByText } = subject();
+    getByTestId('row'); // <-- actually would throw an error if it is not found
 
-    expect(item.children.length).toBe(6);
+    expect(queryByText(/12 dec 2019/i)).not.toBeNull();
+    expect(queryByText(/goodwill/i)).not.toBeNull();
+    expect(queryByText(/debit/i)).not.toBeNull();
+    expect(queryByText('0')).not.toBeNull();
+    expect(queryByText('1000')).not.toBeNull();
+    expect(queryByText('500')).not.toBeNull();
   });
 
   it('show the details', () => {
@@ -20,7 +25,7 @@ describe('ExpenseListItem', () => {
     const item = getByTestId('row');
 
     fireEvent.click(item);
-
+    // you can do more value specific assert to make sure you have everything in a right place and format.
     expect(queryByText(/transaction type/i)).not.toBeNull();
   });
 });

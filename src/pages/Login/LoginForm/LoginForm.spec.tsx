@@ -10,8 +10,8 @@ const subject = () => render(<LoginForm onSubmit={mockSubmit} />);
 
 describe('LoginForm', () => {
   it('submit the form', async () => {
-    const { queryByTestId, queryByText } = subject();
-    login(queryByTestId, queryByText);
+    const { container, queryByTestId, queryByText } = subject();
+    login(container, queryByTestId, queryByText);
     await wait(() => expect(mockSubmit).toBeCalled());
   });
 

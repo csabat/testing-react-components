@@ -8,7 +8,7 @@ jest.mock('./pages/Account', () => () => <div>Account Page</div>)
 
 const subject = () => render(<MemoryRouter><App /></MemoryRouter>);
 
-export const login = (queryByTestId, queryByText) => {
+export const login = (container, queryByTestId, queryByText) => {
   // const email = container.querySelector("[name=emailAddress]");
   // const password = container.querySelector("[name=password]");
   // const submitButton = container.querySelector('.loginButton');
@@ -38,8 +38,9 @@ describe('App', () => {
   });
 
   it('navigates the app', async () => {
-    const { queryByText, queryByTestId } = subject();
-    login(queryByTestId, queryByText);
+    // more like an integration test
+    const { container, queryByText, queryByTestId } = subject();
+    login(container, queryByTestId, queryByText);
     
     await wait(() => {
       const accountPageTitle = queryByText(/account page/i);
@@ -67,7 +68,3 @@ describe('App', () => {
   });
 });
 
-
-
-
-/// refactoring initialvalues and names in formik

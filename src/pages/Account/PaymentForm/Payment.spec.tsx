@@ -20,6 +20,7 @@ describe('PaymentForm', () => {
 
   it('calls on cancel when button clicked', () => {
     const { queryByText } = subject();
+
     const cancelButton = queryByText(/cancel/i);
 
     fireEvent.click(cancelButton);
@@ -28,8 +29,9 @@ describe('PaymentForm', () => {
   });
 
   it('validates the form', async () => {
-    const { queryByText, debug } = subject();
+    const { queryByText } = subject();
     const submitButton = queryByText('Submit');
+
     fireEvent.click(submitButton);
 
     await wait(() => {

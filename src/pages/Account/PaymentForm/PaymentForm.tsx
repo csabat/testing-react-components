@@ -31,7 +31,7 @@ const initialValues = {
   payeeName: '',
   reference: '',
   amount: 0,
-  transactionType: TransactionType.ONLINE
+  transactionType: TransactionType.ONLINE // <-- this is an inital input, not a part of the visual form
 }
 
 const styles = require('./styles.module.css');

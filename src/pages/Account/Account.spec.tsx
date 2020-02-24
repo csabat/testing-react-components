@@ -18,7 +18,7 @@ export const fillForm = (configs, query) => {
   });
 };
 
-let mutationCalled = false;
+let mutationCalled = false; // <-- flag to track the mutation event.
 
 const subject = () =>  {
   const getExpenseItemsMock = {
@@ -72,6 +72,7 @@ const subject = () =>  {
       },
     },
     result: () => {
+      // result could be a function wich returns your results, here you can place your flag you would like to assert on.
       mutationCalled = true
 
       return ({
@@ -84,13 +85,12 @@ const subject = () =>  {
 
   const mocks = [ getExpenseItemsMock, getExpenseItemsMock, getAccountDetailsMock, getAccountDetailsMock, makePaymentMutation ];
 
-  const renderResults = render(
+  return render(
     <MockedProvider addTypename={false} mocks={mocks}>
       <Account />
-    </MockedProvider>)
-
-  return { mutationCalled, ...renderResults };
-}
+    </MockedProvider>
+  );
+};
 
 describe('Account', () => {
   it('renders the page', async () => {
@@ -105,7 +105,7 @@ describe('Account', () => {
   });
 
   it('opens the modal', async () => {
-    const { debug, queryByText, queryByLabelText } = subject();
+    const { queryByText } = subject();
 
     await wait(() => {
       const makePaymentButton = queryByText(/make payment/i);
